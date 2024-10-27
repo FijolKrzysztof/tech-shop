@@ -1,0 +1,102 @@
+<div class="fixed inset-0 bg-black/80 z-50 transition-opacity duration-300">
+  <div
+    class="fixed right-0 top-0 h-full w-full max-w-md bg-zinc-900 shadow-xl transform transition-transform duration-300">
+    <div class="p-6 border-b border-zinc-800">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-bold text-zinc-100">Shopping Cart</h2>
+        <button
+          (click)="close.emit()"
+          class="p-2 hover:bg-zinc-800 rounded-lg transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-6 w-6 text-zinc-100" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="p-6 h-full overflow-y-auto">
+      @if (items().length) {
+        @for (item of items(); track item.id) {
+          <div
+            class="relative flex items-center gap-4 mb-4 p-4 bg-zinc-800/50 rounded-lg group hover:bg-zinc-800 transition-colors">
+            <div class="w-16 h-16 flex items-center justify-center bg-zinc-900 rounded-lg">
+              @switch (item.iconType) {
+                @case (IconType.laptop) {
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       class="h-8 w-8 text-emerald-400" fill="none"
+                       viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+                  </svg>
+                }
+                @case (IconType.monitor) {
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       class="h-8 w-8 text-emerald-400" fill="none"
+                       viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                }
+                @case (IconType.smartphone) {
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       class="h-8 w-8 text-emerald-400" fill="none"
+                       viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                }
+              }
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold text-zinc-100">{{ item.name }}</h3>
+              <p class="text-zinc-400">{{ item.price }}</p>
+            </div>
+            @if (item.quantity > 1) {
+              <span class="absolute -top-1 -right-1 bg-emerald-500 text-black rounded-full w-5 h-5 text-xs flex items-center justify-center animate-bounce">
+                {{item.quantity}}
+              </span>
+            }
+            <button
+              (click)="removeItem.emit(item.id)"
+              class="text-zinc-500 hover:text-red-500 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   class="h-5 w-5" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        }
+
+        <div class="mt-6 pt-6 border-t border-zinc-800">
+          <div class="flex justify-between items-center font-bold text-xl mb-6 text-zinc-100">
+            <span>Total:</span>
+            <span>{{ totalPrice() }}</span>
+          </div>
+          <button class="w-full bg-emerald-500 text-black py-4 rounded-lg hover:bg-emerald-400
+                           transition-colors transform hover:scale-[1.02] active:scale-[0.98] duration-200">
+            Checkout
+          </button>
+        </div>
+      } @else {
+        <div class="text-center text-zinc-500 py-12">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-12 w-12 mx-auto mb-4 opacity-50" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <p>Your cart is empty</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

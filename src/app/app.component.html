@@ -1,0 +1,29 @@
+<div class="min-h-screen bg-[#0a0a0a]">
+  <app-header
+    [cartItemsCount]="cartService.getCartItemsCount()"
+    [isMenuOpen]="isMenuOpen"
+    (searchChanged)="onSearch($event)"
+    (toggleCart)="isCartOpen = !isCartOpen"
+    (toggleMenu)="isMenuOpen = !isMenuOpen">
+  </app-header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (product of products$ | async; track product.id) {
+        <app-product-card
+          [product]="product"
+          [isAdded]="(recentlyAddedId$ | async) === product.id">
+        </app-product-card>
+      }
+    </div>
+  </main>
+
+  @if (isCartOpen) {
+    <app-cart
+      [items]="(cartItems$ | async) ?? []"
+      [totalPrice]="cartService.getTotalPrice()"
+      (close)="isCartOpen = false"
+      (removeItem)="cartService.removeFromCart($event)">
+    </app-cart>
+  }
+</div>
