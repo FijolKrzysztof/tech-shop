@@ -1,6 +1,7 @@
 import {Component, input, output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {Category} from '../../models/category.enum';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,8 @@ export class HeaderComponent {
   searchChanged = output<string>();
 
   searchValue: string = '';
+
+  protected Category = Category;
 
   onSearch(term: string): void {
     this.searchChanged.emit(term);

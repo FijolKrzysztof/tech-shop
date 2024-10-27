@@ -1,5 +1,5 @@
 export enum IconType {
-  laptop = 'laptop',
-  monitor = 'monitor',
-  smartphone = 'smartphone',
+  Laptop = 'Laptop',
+  Monitor = 'Monitor',
+  Smartphone = 'Smartphone',
 }
