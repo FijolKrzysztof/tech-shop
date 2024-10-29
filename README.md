@@ -47,7 +47,7 @@ A modern, responsive e-commerce layout built with Angular and TailwindCSS. This 
 
 1. Clone the repository
 ```bash
-git clone https://github.com/FijolKrzysztof/tech-shop.git
+git clone https://github.com/fijolkrzysztof/tech-shop.git
 cd tech-shop
 ```
 
