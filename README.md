@@ -4,9 +4,7 @@ A modern, responsive e-commerce layout built with Angular and TailwindCSS. This 
 
 ## ✨ Demo
 
-[Live Demo](https://fijolkrzysztof.github.io/tech-shop/)
-
-![TechSpec Preview](src/assets/img.png)
+🌐 [Live Demo](https://fijolkrzysztof.github.io/tech-shop/)
 
 ## 🌟 Features
 
