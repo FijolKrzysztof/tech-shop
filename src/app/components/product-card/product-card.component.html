@@ -56,8 +56,8 @@
       <button
         (click)="addToCart()"
         [class]="'px-4 py-2 rounded-lg transition-all duration-300 ' +
-                    (isAdded() ? 'bg-emerald-500 text-black' : 'bg-zinc-800 hover:bg-emerald-500 text-zinc-100 hover:text-black')">
-        {{ isAdded() ? 'Added!' : 'Add to Cart' }}
+                    (recentlyAdded() ? 'bg-emerald-500 text-black' : 'bg-zinc-800 hover:bg-emerald-500 text-zinc-100 hover:text-black')">
+        {{ recentlyAdded() ? 'Added!' : 'Add to Cart' }}
       </button>
     </div>
   </div>

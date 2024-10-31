@@ -1,7 +1,7 @@
-import {Component, input, output} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CartItem} from '../../models/cart-item.interface';
-import {IconType} from '../../models/icon-type.enum';
+import { Component, inject, output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IconType } from '../../models/icon-type.enum';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +10,15 @@ import {IconType} from '../../models/icon-type.enum';
   templateUrl: 'cart.component.html',
 })
 export class CartComponent {
-  items = input<CartItem[]>([]);
-  totalPrice = input(0);
+  readonly cartService = inject(CartService);
 
   close = output();
-  removeItem = output<number>();
 
-  protected readonly IconType = IconType;
+  totalPrice = this.cartService.totalPrice;
+  items = this.cartService.getCartItems();
+  IconType = IconType;
+
+  removeItem(itemId: number): void {
+    this.cartService.removeFromCart(itemId);
+  }
 }

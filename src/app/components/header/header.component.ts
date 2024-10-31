@@ -1,7 +1,8 @@
-import {Component, input, output} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {Category} from '../../models/category.enum';
+import { Component, inject, output, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Category } from '../../models/category.enum';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +11,20 @@ import {Category} from '../../models/category.enum';
   templateUrl: 'header.component.html',
 })
 export class HeaderComponent {
+  readonly cartService = inject(CartService);
 
-  cartItemsCount = input(0);
-  isMenuOpen = input(false);
+  cartItemsCount = this.cartService.cartItemsCount;
 
-  toggleMenu = output();
   toggleCart = output();
   searchChanged = output<string>();
 
+  isMenuOpen = signal(false);
   searchValue: string = '';
+  Category = Category;
 
-  protected Category = Category;
+  toggleMenu(): void {
+    this.isMenuOpen.update(value => !value);
+  }
 
   onSearch(term: string): void {
     this.searchChanged.emit(term);

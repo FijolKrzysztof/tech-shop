@@ -1,11 +1,10 @@
-import {Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {ProductService} from './services/product.service';
-import {CartService} from './services/cart.service';
-import {HeaderComponent} from './components/header/header.component';
-import {ProductCardComponent} from './components/product-card/product-card.component';
-import {CartComponent} from './components/cart/cart.component';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './services/product.service';
+import { HeaderComponent } from './components/header/header.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @Component({
   selector: 'app-root',
@@ -20,16 +19,10 @@ import {CartComponent} from './components/cart/cart.component';
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
+  readonly productService = inject(ProductService);
 
-  private readonly productService = inject(ProductService);
-
-  protected readonly cartService = inject(CartService);
-  protected readonly recentlyAddedId$ = this.cartService.getRecentlyAdded();
-  protected readonly products$ = this.productService.getFilteredProducts();
-  protected readonly cartItems$ = this.cartService.getCartItems();
-
-  protected isMenuOpen = false;
-  protected isCartOpen = false;
+  products$ = this.productService.getFilteredProducts();
+  isCartOpen = false;
 
   onSearch(term: string): void {
     this.productService.setSearchTerm(term);

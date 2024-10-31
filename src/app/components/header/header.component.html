@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center gap-8">
         <button
-          (click)="toggleMenu.emit()"
+          (click)="toggleMenu()"
           class="lg:hidden p-2 hover:bg-zinc-800 rounded-lg transition-colors"
         >
           @if (isMenuOpen()) {
