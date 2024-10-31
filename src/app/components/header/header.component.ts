@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -7,9 +7,10 @@ import { Category } from '../../models/types';
 import { IconComponent } from '../icon/icon.component';
 import { IconsComponent } from '../icons/icons.component';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { filter } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Paths } from '../../app.routes';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -17,14 +18,12 @@ import { Paths } from '../../app.routes';
   imports: [CommonModule, FormsModule, IconComponent, RouterLink, RouterLinkActive],
   templateUrl: 'header.component.html',
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   readonly cartService = inject(CartService);
   readonly productService = inject(ProductService);
   readonly router = inject(Router);
 
   toggleCart = output();
-
-  private readonly destroy$ = new Subject<void>();
 
   cartItemsCount = this.cartService.cartItemsCount;
   isMenuOpen = signal(false);
@@ -38,15 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
       map(event => event.urlAfterRedirects.split('/')[1] || null),
-      takeUntil(this.destroy$)
+      takeUntilDestroyed(),
     ).subscribe(category => {
       this.productService.setSelectedCategory(category);
     });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   toggleMenu(): void {
