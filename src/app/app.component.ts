@@ -23,8 +23,4 @@ export class AppComponent {
 
   products$ = this.productService.getFilteredProducts();
   isCartOpen = false;
-
-  onSearch(term: string): void {
-    this.productService.setSearchTerm(term);
-  }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../../models/category.enum';
 import { CartService } from '../../services/cart.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,11 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent {
   readonly cartService = inject(CartService);
-
-  cartItemsCount = this.cartService.cartItemsCount;
+  readonly productService = inject(ProductService);
 
   toggleCart = output();
-  searchChanged = output<string>();
 
+  cartItemsCount = this.cartService.cartItemsCount;
   isMenuOpen = signal(false);
   searchValue: string = '';
   Category = Category;
@@ -27,6 +27,6 @@ export class HeaderComponent {
   }
 
   onSearch(term: string): void {
-    this.searchChanged.emit(term);
+    this.productService.setSearchTerm(term);
   }
 }
