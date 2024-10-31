@@ -19,14 +19,14 @@
           <div
             class="relative flex items-center gap-4 mb-4 p-4 bg-zinc-800/50 rounded-lg group hover:bg-zinc-800 transition-colors">
             <div class="w-16 h-16 flex items-center justify-center bg-zinc-900 rounded-lg">
-              @switch (item.iconType) {
-                @case (IconType.Laptop) {
+              @switch (item.category) {
+                @case (Category.Laptops) {
                   <app-icon [icon]="IconsComponent.laptopIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
-                @case (IconType.Monitor) {
+                @case (Category.Monitors) {
                   <app-icon [icon]="IconsComponent.monitorIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
-                @case (IconType.Smartphone) {
+                @case (Category.Phones) {
                   <app-icon [icon]="IconsComponent.phoneIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
               }

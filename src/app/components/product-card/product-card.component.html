@@ -2,20 +2,20 @@
                 transition-all duration-300 transform hover:-translate-y-1 border border-zinc-800">
   <div class="relative p-8">
     <div class="relative flex items-center justify-center h-40 mb-4">
-      @switch (product()?.iconType) {
-        @case (IconType.Laptop) {
+      @switch (product()?.category) {
+        @case (Category.Laptops) {
           <app-icon
             [icon]="IconsComponent.laptopIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
           ></app-icon>
         }
-        @case (IconType.Monitor) {
+        @case (Category.Monitors) {
           <app-icon
             [icon]="IconsComponent.monitorIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
           ></app-icon>
         }
-        @case (IconType.Smartphone) {
+        @case (Category.Phones) {
           <app-icon
             [icon]="IconsComponent.phoneIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"

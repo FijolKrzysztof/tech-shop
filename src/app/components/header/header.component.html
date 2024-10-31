@@ -13,15 +13,14 @@
           }
         </button>
 
-        <h1 class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+        <a [routerLink]="Paths.HOME" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
           TechSpec
-        </h1>
+        </a>
 
         <nav class="hidden lg:flex space-x-8">
-          <a href="#" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Laptops}}</a>
-          <a href="#" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Desktops}}</a>
-          <a href="#" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Monitors}}</a>
-          <a href="#" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Peripherals}}</a>
+          <a [routerLink]="Paths.LAPTOPS" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Laptops}}</a>
+          <a [routerLink]="Paths.MONITORS" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Monitors}}</a>
+          <a [routerLink]="Paths.PHONES" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Phones}}</a>
         </nav>
       </div>
 
@@ -68,11 +67,11 @@
           (ngModelChange)="onSearch($event)"
         />
       </div>
-      <nav class="px-4 py-2">
-        <a href="#" class="block py-2 text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Laptops}}</a>
-        <a href="#" class="block py-2 text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Desktops}}</a>
-        <a href="#" class="block py-2 text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Monitors}}</a>
-        <a href="#" class="block py-2 text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Peripherals}}</a>
+
+      <nav class="p-4 flex flex-col space-y-4">
+        <a [routerLink]="Paths.LAPTOPS" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Laptops}}</a>
+        <a [routerLink]="Paths.MONITORS" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Monitors}}</a>
+        <a [routerLink]="Paths.PHONES" routerLinkActive="text-emerald-400" class="text-zinc-400 hover:text-emerald-400 transition-colors">{{Category.Phones}}</a>
       </nav>
     </div>
   }

@@ -1,7 +1,7 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { IconType, Product } from '../../models/types';
+import { Category, Product } from '../../models/types';
 import { IconComponent } from '../icon/icon.component';
 import { IconsComponent } from '../icons/icons.component';
 
@@ -17,8 +17,9 @@ export class ProductCardComponent {
   product = input<Product>();
 
   recentlyAdded = signal<boolean>(false);
-  IconType = IconType;
-  IconsComponent = IconsComponent;
+
+  readonly IconsComponent = IconsComponent;
+  readonly Category = Category;
 
   addToCart(): void {
     const product = this.product();

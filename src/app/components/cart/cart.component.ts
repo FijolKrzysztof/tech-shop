@@ -1,9 +1,9 @@
 import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { IconType } from '../../models/types';
 import { IconsComponent } from '../icons/icons.component';
 import { IconComponent } from '../icon/icon.component';
+import { Category } from '../../models/types';
 
 @Component({
   selector: 'app-cart',
@@ -17,8 +17,9 @@ export class CartComponent {
   close = output();
 
   items = this.cartService.getCartItems();
-  IconType = IconType;
-  IconsComponent = IconsComponent;
+
+  readonly IconsComponent = IconsComponent;
+  readonly Category = Category;
 
   removeItem(itemId: number): void {
     this.cartService.removeFromCart(itemId);
