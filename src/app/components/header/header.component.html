@@ -7,9 +7,9 @@
           class="lg:hidden p-2 hover:bg-zinc-800 rounded-lg transition-colors"
         >
           @if (isMenuOpen()) {
-            <app-icon [icon]="IconsComponent.closeIcon" className="h-6 w-6 text-zinz-100"></app-icon>
+            <app-icon [icon]="Icons.closeIcon" className="h-6 w-6 text-zinz-100"></app-icon>
           } @else {
-            <app-icon [icon]="IconsComponent.menuIcon" className="h-6 w-6 text-zinz-100"></app-icon>
+            <app-icon [icon]="Icons.menuIcon" className="h-6 w-6 text-zinz-100"></app-icon>
           }
         </button>
 
@@ -35,7 +35,7 @@
             (ngModelChange)="onSearch($event)"
           />
           <app-icon
-            [icon]="IconsComponent.searchIcon"
+            [icon]="Icons.searchIcon"
             className="absolute right-3 top-3 h-5 w-5 text-zinc-500 group-focus-within:text-emerald-400 transition-colors"
           ></app-icon>
         </div>
@@ -45,7 +45,7 @@
         (click)="toggleCart.emit()"
         class="relative p-2 hover:bg-zinc-800 rounded-lg transition-colors"
       >
-        <app-icon [icon]="IconsComponent.cartIcon" className="h-6 w-6 text-zinc-100"></app-icon>
+        <app-icon [icon]="Icons.cartIcon" className="h-6 w-6 text-zinc-100"></app-icon>
         @if (cartItemsCount() > 0) {
           <span class="absolute -top-1 -right-1 bg-emerald-500 text-black rounded-full w-5 h-5 text-xs flex items-center justify-center animate-bounce">
             {{cartItemsCount()}}

@@ -18,7 +18,7 @@ export class CartComponent {
 
   items = this.cartService.getCartItems();
 
-  readonly IconsComponent = IconsComponent;
+  readonly Icons = IconsComponent;
   readonly Category = Category;
 
   removeItem(itemId: number): void {

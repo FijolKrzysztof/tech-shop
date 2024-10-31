@@ -5,19 +5,19 @@
       @switch (product()?.category) {
         @case (Category.Laptops) {
           <app-icon
-            [icon]="IconsComponent.laptopIcon"
+            [icon]="Icons.laptopIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
           ></app-icon>
         }
         @case (Category.Monitors) {
           <app-icon
-            [icon]="IconsComponent.monitorIcon"
+            [icon]="Icons.monitorIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
           ></app-icon>
         }
         @case (Category.Phones) {
           <app-icon
-            [icon]="IconsComponent.phoneIcon"
+            [icon]="Icons.phoneIcon"
             className="w-32 h-32 text-emerald-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
           ></app-icon>
         }

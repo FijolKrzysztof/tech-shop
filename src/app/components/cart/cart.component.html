@@ -8,7 +8,7 @@
           (click)="close.emit()"
           class="p-2 hover:bg-zinc-800 rounded-lg transition-colors"
         >
-          <app-icon [icon]="IconsComponent.closeIcon" className="h-6 w-6 text-zinc-100"></app-icon>
+          <app-icon [icon]="Icons.closeIcon" className="h-6 w-6 text-zinc-100"></app-icon>
         </button>
       </div>
     </div>
@@ -21,13 +21,13 @@
             <div class="w-16 h-16 flex items-center justify-center bg-zinc-900 rounded-lg">
               @switch (item.category) {
                 @case (Category.Laptops) {
-                  <app-icon [icon]="IconsComponent.laptopIcon" className="h-8 w-8 text-emerald-400"></app-icon>
+                  <app-icon [icon]="Icons.laptopIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
                 @case (Category.Monitors) {
-                  <app-icon [icon]="IconsComponent.monitorIcon" className="h-8 w-8 text-emerald-400"></app-icon>
+                  <app-icon [icon]="Icons.monitorIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
                 @case (Category.Phones) {
-                  <app-icon [icon]="IconsComponent.phoneIcon" className="h-8 w-8 text-emerald-400"></app-icon>
+                  <app-icon [icon]="Icons.phoneIcon" className="h-8 w-8 text-emerald-400"></app-icon>
                 }
               }
             </div>
@@ -44,7 +44,7 @@
               (click)="removeItem(item.id)"
               class="text-zinc-500 hover:text-red-500 transition-colors"
             >
-              <app-icon [icon]="IconsComponent.closeIcon" className="h-5 w-5"></app-icon>
+              <app-icon [icon]="Icons.closeIcon" className="h-5 w-5"></app-icon>
             </button>
           </div>
         }
@@ -61,7 +61,7 @@
         </div>
       } @else {
         <div class="text-center text-zinc-500 py-12">
-          <app-icon [icon]="IconsComponent.cartIcon" className="h-12 w-12 mx-auto mb-4 opacity-50"></app-icon>
+          <app-icon [icon]="Icons.cartIcon" className="h-12 w-12 mx-auto mb-4 opacity-50"></app-icon>
           <p>Your cart is empty</p>
         </div>
       }

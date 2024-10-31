@@ -18,7 +18,7 @@ export class ProductCardComponent {
 
   recentlyAdded = signal<boolean>(false);
 
-  readonly IconsComponent = IconsComponent;
+  readonly Icons = IconsComponent;
   readonly Category = Category;
 
   addToCart(): void {

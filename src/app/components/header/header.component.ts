@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   searchValue = '';
 
   readonly Category = Category;
-  readonly IconsComponent = IconsComponent;
+  readonly Icons = IconsComponent;
   readonly Paths = Paths;
 
   ngOnInit() {
