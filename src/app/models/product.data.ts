@@ -1,6 +1,4 @@
-import { Product } from './product.interface';
-import { IconType } from './icon-type.enum';
-import { Category } from './category.enum';
+import { Category, IconType, Product } from './types';
 
 export const PRODUCTS: Product[] = [
   {

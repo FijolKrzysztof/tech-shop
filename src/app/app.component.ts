@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './services/product.service';
@@ -17,10 +17,15 @@ import { CartComponent } from './components/cart/cart.component';
     CartComponent
   ],
   templateUrl: 'app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   readonly productService = inject(ProductService);
 
   products$ = this.productService.getFilteredProducts();
-  isCartOpen = false;
+  isCartOpen = signal(false);
+
+  toggleCart(): void {
+    this.isCartOpen.update(value => !value);
+  }
 }

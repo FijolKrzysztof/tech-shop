@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-[#0a0a0a]">
   <app-header
-    (toggleCart)="isCartOpen = !isCartOpen">
+    (toggleCart)="toggleCart()">
   </app-header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -11,7 +11,7 @@
     </div>
   </main>
 
-  @if (isCartOpen) {
-    <app-cart (close)="isCartOpen = false"></app-cart>
+  @if (isCartOpen()) {
+    <app-cart (close)="isCartOpen.set(false)"></app-cart>
   }
 </div>
