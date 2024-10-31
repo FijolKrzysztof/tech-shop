@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, output, signal } from '@angular/core';
+import { Component, effect, inject, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -10,7 +10,6 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { filter } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Paths } from '../../app.routes';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   imports: [CommonModule, FormsModule, IconComponent, RouterLink, RouterLinkActive],
   templateUrl: 'header.component.html',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   readonly cartService = inject(CartService);
   readonly productService = inject(ProductService);
   readonly router = inject(Router);
@@ -33,13 +32,14 @@ export class HeaderComponent implements OnInit {
   readonly Icons = IconsComponent;
   readonly Paths = Paths;
 
-  ngOnInit() {
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map(event => event.urlAfterRedirects.split('/')[1] || null),
-      takeUntilDestroyed(),
-    ).subscribe(category => {
-      this.productService.setSelectedCategory(category);
+  constructor() {
+    effect(() => {
+      this.router.events.pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        map(event => event.urlAfterRedirects.split('/')[1] || null),
+      ).subscribe(category => {
+        this.productService.setSelectedCategory(category);
+      });
     });
   }
 
