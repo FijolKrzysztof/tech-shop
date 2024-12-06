@@ -6,26 +6,28 @@ A modern, responsive e-commerce layout built with Angular and TailwindCSS. This 
 
 🌐 [Live Demo](https://fijolkrzysztof.github.io/tech-shop/)
 
-## 🌟 Features
+## Purpose
+This platform aims to:
 
-- **Modern Design**
-  - Responsive layout for all devices
-  - Smooth animations and transitions
-  - Modern card-based product display
+- 🎯 Showcase modern e-commerce design patterns
+- 🛡️ Demonstrate responsive design principles
+- 📚 Present best practices in Angular development
+- 🎮 Provide reusable component examples
+- 🚀 Exhibit smooth animations and transitions
 
-- **UI Components**
-  - Product search functionality
-  - Interactive shopping cart
-  - Product cards with specs
-  - Responsive navigation
-  - Animated interactions
+## Core Features
 
-- **Technical Stack**
-  - Standalone Angular components
-  - TailwindCSS for styling
-  - Custom SVG icons
-  - TypeScript
-  - RxJS for state demo
+### User Interface
+- 🎨 Modern, responsive layout 
+- 💫 Smooth animations and transitions
+- 🗃️ Card-based product display
+- 🖼️ Fluid layouts and grids
+- 📐 Responsive typography
+
+### Technical Implementation
+- ⚡ Standalone Angular components
+- 🔄 RxJS state management
+- 🎨 Custom SVG icons
 
 ## 🛠️ Technologies Used
 
