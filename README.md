@@ -1,4 +1,4 @@
-# TechSpec - Modern Tech Store Demo 🚀
+# TechSpec - Modern Tech Store Demo
 
 A modern, responsive e-commerce layout built with Angular and TailwindCSS. This project is a demo/mockup showcasing modern design patterns and UI interactions.
 
